@@ -4,17 +4,19 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 
 
+# IMAGE SCALING
 def display_img(img):
     fig = plt.figure(figsize=(12, 10))
     ax = fig.add_subplot(111)
     ax.imshow(img)
 
 
-plate_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_russian_plate_number.xml')
+# ALGORITHM TO PLATE DETECTION
+plate_cascade = cv2.CascadeClassifier('path to your haarcascade algo')
 
 
-def detect_plate(img):
-    
+# PLATE DETECTION FUNCTION
+def detect_plate(img):  
   
     plate_img = img.copy()
     plate_copy = plate.copy()
@@ -28,16 +30,17 @@ def detect_plate(img):
     return plate_copy
 
 
-
-plate = cv2.imread('SAMPLE_IMAGES/img1.jpg')
+# IMPORT AND PROCESS IMAGE
+plate = cv2.imread('path to your image')
 plate = cv2.cvtColor(plate, cv2.COLOR_BGR2RGB) 
 display_img(plate)
 
 
-
+# BLUR AND DISPLAY THE IMAGE
 blurred = cv2.blur(plate, (40,40)) 
 display_img(blurred)
 
 
+# DETECT THE PLATE AND DISPLAY THE GREEN DETECTION
 result = detect_plate(blurred)
 display_img(result)
